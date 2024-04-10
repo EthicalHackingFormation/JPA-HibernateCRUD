@@ -1,5 +1,7 @@
 package com.majpro.crud;
 
+import java.util.List;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -20,8 +22,18 @@ public class CrudApplication {
            return runner -> {
 			  //createStudent(studentDAO);
 			  //createMultipleStudent(studentDAO);
-			  readStudent(studentDAO);
+			  //readStudent(studentDAO);
+			  queryforStudent(studentDAO);
 		   };
+	}
+
+	private void queryforStudent(StudentDAO studentDAO) {
+		//Get a list of student
+		List<Student> theStudents = studentDAO.findAll();
+		//Display list of student
+		for (Student tempStudent : theStudents){
+			System.out.println(tempStudent);
+		}
 	}
 
 	private void readStudent(StudentDAO studentDAO) {
